@@ -76,10 +76,10 @@ class RTLErrorCorrectionModel(nn.Module):
         inputs_embeddings = self.encoder.embeddings.word_embeddings(source_ids)
         
         # Fuse DFG node embeddings with code token embeddings
-        nodes_to_token_mask = nodes_mask[:,:,None] & token_mask[:,None,:] & attn_mask
-        nodes_to_token_mask = nodes_to_token_mask / (nodes_to_token_mask.sum(-1)+1e-10)[:,:,None]
+        nodes_to_token_mask = nodes_mask[:,:,None] & token_mask[:,None,:] & attn_mask.bool()
+        nodes_to_token_mask = nodes_to_token_mask.float() / (nodes_to_token_mask.sum(-1, keepdim=True).float() + 1e-10)
         avg_embeddings = torch.einsum("abc,acd->abd", nodes_to_token_mask, inputs_embeddings)
-        inputs_embeddings = inputs_embeddings * (~nodes_mask)[:,:,None] + avg_embeddings * nodes_mask[:,:,None]  
+        inputs_embeddings = inputs_embeddings * (~nodes_mask)[:,:,None].float() + avg_embeddings * nodes_mask[:,:,None].float()  
         
         # Encode with attention
         outputs = self.encoder(inputs_embeds=inputs_embeddings, attention_mask=attn_mask, position_ids=position_idx)
