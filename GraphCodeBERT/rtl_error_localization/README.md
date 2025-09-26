@@ -139,20 +139,41 @@ The system currently detects and corrects:
 
 *Additional error patterns can be easily added to the system.*
 
+## 🚨 重要数据状况说明 / Important Data Status Notice
+
+**当前数据状况 / Current Data Status**:
+- ⚠️  **演示阶段**: 当前使用3个硬编码样本数据进行功能演示
+- 📍 **数据位置**: `rtl_error_correction.py` 的 `create_sample_data()` 函数
+- 🎯 **需要真实数据**: 实际训练需要10,000+个错误-修正代码对
+- 📋 **详细说明**: 参见 [RTL_DATA_SOURCES.md](../../RTL_DATA_SOURCES.md)
+
 ## Training Your Own Model
 
-### 1. Prepare Training Data
+### 1. Generate Training Dataset (推荐)
 ```bash
-# Create your training data in the supported format
-python demo_rtl_error_correction.py  # Generates sample format
+# 生成1000个训练样本 (Generate 1000 training samples)
+python ../../tools/generate_rtl_dataset.py --output datasets/rtl_training --size 1000
+
+# 查看生成的数据 (Check generated data) 
+ls datasets/rtl_training/
+head datasets/rtl_training/train.jsonl
 ```
 
-### 2. Online Training (with internet)
+### 2. Prepare Your Own Training Data
+```bash
+# Create your training data in the supported format
+python demo_rtl_error_correction.py  # Shows sample format
+
+# Required format per line in JSONL:
+# {"buggy_code": "...", "correct_code": "...", "comments": "...", "error_type": "..."}
+```
+
+### 3. Online Training (with internet)
 ```bash
 python rtl_error_correction.py \
     --do_train \
     --model_name_or_path microsoft/graphcodebert-base \
-    --train_filename your_training_data.jsonl \
+    --train_filename datasets/rtl_training/train.jsonl \
     --output_dir ./saved_models \
     --max_source_length 256 \
     --max_target_length 128 \
@@ -161,12 +182,12 @@ python rtl_error_correction.py \
     --num_train_epochs 3
 ```
 
-### 3. Testing
+### 4. Testing
 ```bash
 python rtl_error_correction.py \
     --do_test \
     --model_name_or_path ./saved_models \
-    --test_filename your_test_data.jsonl
+    --test_filename datasets/rtl_training/test.jsonl
 ```
 
 ## Implementation Status
