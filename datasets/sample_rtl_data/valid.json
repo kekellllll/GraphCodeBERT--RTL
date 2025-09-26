@@ -1,0 +1,65 @@
+[
+  {
+    "buggy_code": "module example_418(input x, en, output sum); assign sum = x & en | a; endmodule",
+    "correct_code": "module example_418(input x, en, output sum); assign sum = (x & en) | a; endmodule",
+    "comments": "Logic gate with proper operator precedence",
+    "error_type": "missing_parentheses",
+    "template_name": "logic_gate",
+    "generated_at": "2025-09-26T06:01:50.169606",
+    "id": 24
+  },
+  {
+    "buggy_code": "always @(posedge clk) begin q = d; end",
+    "correct_code": "always @(posedge clk) begin q <= d; end",
+    "comments": "D flip-flop register with non-blocking assignment",
+    "error_type": "blocking_assignment",
+    "template_name": "dff_register",
+    "generated_at": "2025-09-26T06:01:50.169473",
+    "id": 1
+  },
+  {
+    "buggy_code": "module simple_141(input in, output y); assign y = in + 1; endmodule",
+    "correct_code": "module simple_141(input in, output y); assign y = in; endmodule",
+    "comments": "Simple wire connection module",
+    "error_type": "unnecessary_arithmetic",
+    "template_name": "simple_assign",
+    "generated_at": "2025-09-26T06:01:50.169600",
+    "id": 23
+  },
+  {
+    "buggy_code": "module simple_135(input d, output prod); assign prod = d + 1; endmodule",
+    "correct_code": "module simple_135(input d, output prod); assign prod = d; endmodule",
+    "comments": "Simple wire connection module",
+    "error_type": "unnecessary_arithmetic",
+    "template_name": "simple_assign",
+    "generated_at": "2025-09-26T06:01:50.169613",
+    "id": 25
+  },
+  {
+    "buggy_code": "always @(posedge clk) begin q = d; end",
+    "correct_code": "always @(posedge clk) begin q <= d; end",
+    "comments": "D flip-flop register with non-blocking assignment",
+    "error_type": "blocking_assignment",
+    "template_name": "dff_register",
+    "generated_at": "2025-09-26T06:01:50.169681",
+    "id": 37
+  },
+  {
+    "buggy_code": "always @(posedge clk) begin q = d; end",
+    "correct_code": "always @(posedge clk) begin q <= d; end",
+    "comments": "D flip-flop register with non-blocking assignment",
+    "error_type": "blocking_assignment",
+    "template_name": "dff_register",
+    "generated_at": "2025-09-26T06:01:50.169534",
+    "id": 11
+  },
+  {
+    "buggy_code": "always @(posedge clk) begin q = d; end",
+    "correct_code": "always @(posedge clk) begin q <= d; end",
+    "comments": "D flip-flop register with non-blocking assignment",
+    "error_type": "blocking_assignment",
+    "template_name": "dff_register",
+    "generated_at": "2025-09-26T06:01:50.169668",
+    "id": 35
+  }
+]

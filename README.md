@@ -126,6 +126,20 @@ Please refer to the [CodeExecutor](https://github.com/microsoft/CodeBERT/tree/ma
 This repo will provide the code for reproducing the experiments on LCC datasets in [LongCoder: A Long-Range Pre-trained Language Model for Code Completion](https://arxiv.org/abs/2306.14893). LongCoder is a sparse and efficient pre-trained Transformer model for long code modeling.
 
 Please refer to the [LongCoder](https://github.com/microsoft/CodeBERT/tree/master/LongCoder) folder for details.
+## RTL模型数据源说明 (RTL Model Data Sources)
+
+**问题**: 这个RTL模型训练没有数据么，这些测试的输出是训练的结果还是你自己添加的？如果有数据集请告诉我具体在哪里？
+
+**回答**: 📋 **[详细数据源说明文档](./RTL_DATA_SOURCES.md)** - 包含完整的中英文数据状况分析
+
+### 🔍 快速回答
+- **当前状态**: 项目使用演示样本数据（3个示例），非真实训练数据集
+- **数据位置**: `GraphCodeBERT/rtl_error_localization/rtl_error_correction.py` 的 `create_sample_data()` 函数
+- **测试输出**: 基于预定义样本，不是训练结果
+- **数据需求**: 需要创建包含10,000+错误-修正代码对的真实数据集
+
+---
+
 ## Mij矩阵应用说明 (Mij Matrix Applications)
 
 **问题**: Mij矩阵应用在了什么地方有什么用？
