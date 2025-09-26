@@ -1,0 +1,74 @@
+[
+  {
+    "buggy_code": "module demo_771(input d, a, output prod); assign prod = d & a | x; endmodule",
+    "correct_code": "module demo_771(input d, a, output prod); assign prod = (d & a) | x; endmodule",
+    "comments": "Logic gate with proper operator precedence",
+    "error_type": "missing_parentheses",
+    "template_name": "logic_gate",
+    "generated_at": "2025-09-26T06:01:50.169699",
+    "id": 40
+  },
+  {
+    "buggy_code": "module example_187(input d, output out); assign out = d + 1; endmodule",
+    "correct_code": "module example_187(input d, output out); assign out = d; endmodule",
+    "comments": "Simple wire connection module",
+    "error_type": "unnecessary_arithmetic",
+    "template_name": "simple_assign",
+    "generated_at": "2025-09-26T06:01:50.169508",
+    "id": 6
+  },
+  {
+    "buggy_code": "always @(posedge clk) begin q = d; end",
+    "correct_code": "always @(posedge clk) begin q <= d; end",
+    "comments": "D flip-flop register with non-blocking assignment",
+    "error_type": "blocking_assignment",
+    "template_name": "dff_register",
+    "generated_at": "2025-09-26T06:01:50.169492",
+    "id": 4
+  },
+  {
+    "buggy_code": "assign out = sel ? in1; in0;",
+    "correct_code": "assign out = sel ? in1 : in0;",
+    "comments": "2-to-1 multiplexer with conditional assignment",
+    "error_type": "syntax_error",
+    "template_name": "mux_2to1",
+    "generated_at": "2025-09-26T06:01:50.169648",
+    "id": 31
+  },
+  {
+    "buggy_code": "always @(posedge clk) begin if (!rst_n) count <= 0; else count <= count + 1; end",
+    "correct_code": "always @(posedge clk, negedge rst_n) begin if (!rst_n) count <= 0; else count <= count + 1; end",
+    "comments": "Counter with proper reset sensitivity",
+    "error_type": "clock_sensitivity",
+    "template_name": "counter",
+    "generated_at": "2025-09-26T06:01:50.169487",
+    "id": 3
+  },
+  {
+    "buggy_code": "assign out = sel ? in1; in0;",
+    "correct_code": "assign out = sel ? in1 : in0;",
+    "comments": "2-to-1 multiplexer with conditional assignment",
+    "error_type": "syntax_error",
+    "template_name": "mux_2to1",
+    "generated_at": "2025-09-26T06:01:50.169619",
+    "id": 26
+  },
+  {
+    "buggy_code": "module test_197(input en, in, output valid); assign valid = en & in | b; endmodule",
+    "correct_code": "module test_197(input en, in, output valid); assign valid = (en & in) | b; endmodule",
+    "comments": "Logic gate with proper operator precedence",
+    "error_type": "missing_parentheses",
+    "template_name": "logic_gate",
+    "generated_at": "2025-09-26T06:01:50.169693",
+    "id": 39
+  },
+  {
+    "buggy_code": "always @(posedge clk) begin q = d; end",
+    "correct_code": "always @(posedge clk) begin q <= d; end",
+    "comments": "D flip-flop register with non-blocking assignment",
+    "error_type": "blocking_assignment",
+    "template_name": "dff_register",
+    "generated_at": "2025-09-26T06:01:50.169550",
+    "id": 14
+  }
+]

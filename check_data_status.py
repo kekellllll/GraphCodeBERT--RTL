@@ -59,8 +59,10 @@ def check_generated_datasets():
     dataset_locations = [
         'datasets/rtl_error_correction',
         'datasets/rtl_training', 
+        'datasets/sample_rtl_data',
         '../datasets/rtl_error_correction',
-        '../datasets/rtl_training'
+        '../datasets/rtl_training',
+        '../datasets/sample_rtl_data'
     ]
     
     found_datasets = []

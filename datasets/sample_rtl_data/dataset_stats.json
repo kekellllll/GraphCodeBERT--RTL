@@ -1,0 +1,18 @@
+{
+  "total_samples": 50,
+  "train_samples": 35,
+  "valid_samples": 7,
+  "test_samples": 8,
+  "error_types": [
+    "unnecessary_arithmetic",
+    "missing_parentheses",
+    "blocking_assignment",
+    "clock_sensitivity",
+    "wire_reg_mismatch",
+    "port_connection",
+    "syntax_error",
+    "logic_error"
+  ],
+  "generation_time": "2025-09-26T06:01:50.170955",
+  "templates_used": 5
+}
