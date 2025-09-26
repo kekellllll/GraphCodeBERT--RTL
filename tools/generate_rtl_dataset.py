@@ -150,7 +150,7 @@ def main():
     parser = argparse.ArgumentParser(description='生成RTL错误修正数据集')
     parser.add_argument('--output', type=str, default='datasets/rtl_error_correction',
                       help='输出目录路径') 
-    parser.add_argument('--size', type=int, default=1000,
+    parser.add_argument('--size', type=int, default=75000,
                       help='生成的总样本数')
     parser.add_argument('--train_ratio', type=float, default=0.7,
                       help='训练集比例')
