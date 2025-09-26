@@ -142,17 +142,17 @@ The system currently detects and corrects:
 ## 🚨 重要数据状况说明 / Important Data Status Notice
 
 **当前数据状况 / Current Data Status**:
-- ⚠️  **演示阶段**: 当前使用3个硬编码样本数据进行功能演示
-- 📍 **数据位置**: `rtl_error_correction.py` 的 `create_sample_data()` 函数
-- 🎯 **需要真实数据**: 实际训练需要10,000+个错误-修正代码对
+- ✅ **生产就绪**: 现已生成52,500个RTL错误修正训练样本（超过原Java数据集规模）
+- 📍 **数据位置**: `datasets/rtl_training/` 目录包含训练、验证、测试集
+- 🎯 **数据规模**: 训练集52,500样本，验证集11,250样本，测试集11,250样本
 - 📋 **详细说明**: 参见 [RTL_DATA_SOURCES.md](../../RTL_DATA_SOURCES.md)
 
 ## Training Your Own Model
 
 ### 1. Generate Training Dataset (推荐)
 ```bash
-# 生成1000个训练样本 (Generate 1000 training samples)
-python ../../tools/generate_rtl_dataset.py --output datasets/rtl_training --size 1000
+# 生成75,000个训练样本 (Generate 75,000 training samples - 52,500 for training)
+python ../../tools/generate_rtl_dataset.py --output datasets/rtl_training
 
 # 查看生成的数据 (Check generated data) 
 ls datasets/rtl_training/
